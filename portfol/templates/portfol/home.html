@@ -1,0 +1,63 @@
+
+
+{% extends 'portfol/base.html' %}
+{% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Igor's portfolio</title>
+
+
+
+</head>
+
+<body>
+      
+<div class="row justify-content-center my-3">
+  <div class="col-4">
+
+    <img src="{% static 'portfol/homephoto1.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Welcome to Igor's web page!</h1>
+  </div>
+</div>
+<h2 class="mt-2">Portfolio</h2>
+<hr>
+
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-3 col-md-4">
+    <div class="card">
+
+      <img src="{{ project.image.url }}" class="img-fluid">
+
+
+      <div class="card-body">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+        {% if project.url %}
+        <a href="{{ project.url }}" class="btn btn-primary">{{ project.url }}</a>
+        {% else %}
+        <a href="#" class="btn btn-primary">Link to</a>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+</body>
+</html>>
